@@ -1,0 +1,34 @@
+<div *ngIf="source">
+<!--Source-->
+<div class="container">
+    <h2>Source</h2>
+    <div #sourceList="cdkDropList" cdkDropList class="listContainer" 
+    [cdkDropListData]="shuffledArr"
+    [cdkDropListConnectedTo]="[targetList]" (cdkDropListDropped)="drop($event)">
+        <div cdkDrag [cdkDragDisabled]="disableList" *ngFor="let item of shuffledArr" class="listItem">{{item}}</div>
+    </div>
+</div>
+
+<!--Target-->
+<div class="container">
+    <h2>Target</h2>
+    <div #targetList="cdkDropList" cdkDropList class="listContainer"
+     [cdkDropListData]="target"
+     [cdkDropListConnectedTo]="[sourceList]" (cdkDropListDropped)="drop($event)">
+        <div cdkDrag [cdkDragDisabled]="disableList" *ngFor="let item of target" class="listItem">
+            {{item}}
+        </div>
+    </div>
+</div>
+
+<!--Solutions-->
+<div class="container" *ngIf="solution">
+    <div class="container">
+        <h2>Solution</h2>
+        <div class="solutionListContainer">
+            <div class="solutionListItem" *ngFor="let item of solution">{{item}}</div>
+        </div>
+    </div>
+</div>
+<div><button (click)="checkOrder()" [disabled]="solution">Check Sequence</button></div>
+</div>

@@ -1,0 +1,11 @@
+<i class="instructionText">Below is a text with blanks. Click on each blank, a list of choices will appear. Select the appropriate choice for each blank.</i>
+<div class="questionBlock">
+    <ng-container #container></ng-container>
+</div>
+
+<ng-template #template let-paragraph="paragraph" let-ddData="ddData">
+    <span>{{paragraph}}<select *ngIf="ddData">
+    <option> </option>
+    <option *ngFor="let item of ddData">{{item}}</option>
+    </select></span>      
+</ng-template>
