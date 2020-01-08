@@ -12,7 +12,9 @@ export class APIService {
     getReorderParas(): Observable<any> {
        return this.httpClient.get('./assets/jumbledParas.json');
     }
-
+    getReadingSection(): Observable<any> {
+        return this.httpClient.get('./assets/reading.json');
+    }
     getReadWriteFIB(): Observable<any> {
         return this.httpClient.get('./assets/rwFillInTheBlank.json');
     }
