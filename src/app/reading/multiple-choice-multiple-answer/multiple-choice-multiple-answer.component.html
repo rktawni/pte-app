@@ -1,0 +1,21 @@
+<div class="displayFlex">
+    <!-- Paragraph at left side -->
+    <div class="panel">
+        <div class="paragraph" *ngFor="let para of paraArray">{{para}}</div>
+    </div>
+
+    <!-- Right panel -->
+    <div class="panel">
+        <!-- Question -->
+        <div class="question">{{question}}</div>
+        <!-- /Question-->
+
+        <!-- Options-->
+        <div>
+            <div *ngFor="let answer of answerOption">
+                <input type="checkbox"><span>{{answer}}</span>
+            </div>
+        </div>
+        <!-- /Options-->
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.dropContainer {
+    min-height: 20px;
+    min-width: 100px;
+    border: 1px solid;
+    display: inline-block;
+}
+
+.optionContainer {
+    background-color: #65ABF3;
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dragOption {
+    background-color: white;
+    border: 1px solid;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    cursor: move;
+}
