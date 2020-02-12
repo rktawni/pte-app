@@ -1,17 +1,18 @@
+<i class="instructionText">The text boxes in the left panel have been placed in a random order. Restore the original order by dragging the text boxes from the left panel to the right panel.</i>
 <div *ngIf="source">
 <!--Source-->
 <div class="container">
-    <h2>Source</h2>
+    <div class="listContainerTitle">Source</div>
     <div #sourceList="cdkDropList" cdkDropList class="listContainer" 
-    [cdkDropListData]="shuffledArr"
+    [cdkDropListData]="jumbledPara"
     [cdkDropListConnectedTo]="[targetList]" (cdkDropListDropped)="drop($event)">
-        <div cdkDrag [cdkDragDisabled]="disableList" *ngFor="let item of shuffledArr" class="listItem">{{item}}</div>
+        <div cdkDrag [cdkDragDisabled]="disableList" *ngFor="let item of jumbledPara" class="listItem">{{item}}</div>
     </div>
 </div>
 
 <!--Target-->
 <div class="container">
-    <h2>Target</h2>
+    <div class="listContainerTitle">Target</div>
     <div #targetList="cdkDropList" cdkDropList class="listContainer"
      [cdkDropListData]="target"
      [cdkDropListConnectedTo]="[sourceList]" (cdkDropListDropped)="drop($event)">

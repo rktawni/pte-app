@@ -10,34 +10,50 @@ import { APIService } from '../api.servce';
 export class ReadingComponent implements OnInit {
     progress = 2;
     rwFIB = {}; // Dropdown fill in the blank
+    fib;
     testRWFIB = []; // will hold all the read write FIBs
     readingFIB = []; // Drag and Drop fill in the blank
-    reorderParagraph = []; // reorder paragraph
+    testReorderParagraph = []; // reorder paragraph
+    jumbledPara;
+    mcmaTest;
     mcma = []; // Multiple choise multiple answer
     mcsa = []; // Multiple choise single answer
+    responseData;
 
     constructor(private apiService: APIService) {}
 
     ngOnInit() {
-        this.apiService.getReadWriteFIB().subscribe({
+        this.apiService.getReadingSection().subscribe({
             next: this.handleReadResponse.bind(this),
             error: this.handleReadError.bind(this)
         });
-        console.log('ngOnINIT');
     }
 
     handleReadError(data) {
 
     }
     handleReadResponse(data) {
-        console.log('Read Response: ', data);
-        this.testRWFIB = data.fib;
-        this.rwFIB =  this.testRWFIB.shift();
+        this.responseData = data;
+        console.log('Read Response: ', this.responseData);
+        this.testRWFIB = data.readWriteFIB.fib;
+        this.testReorderParagraph = data.reorderParagraph.paragraphs;
+        this.mcma = data.readingMCMA.mcma;
+        this.readingFIB = data.readingFIB.fib;
+        this.loadNextQuestion();
     }
 
     loadNextQuestion() {
         if (this.testRWFIB.length) {
             this.rwFIB = this.testRWFIB.shift();
+        } else if (this.testReorderParagraph.length) {
+            this.rwFIB = undefined;
+            this.jumbledPara = this.testReorderParagraph.shift();
+        } else if (this.mcma.length) {
+            this.jumbledPara = undefined;
+            this.mcmaTest = this.mcma.shift();
+        } else if (this.readingFIB.length) {
+            this.mcmaTest = undefined;
+            this.fib = this.readingFIB.shift();
         }
     }
 }

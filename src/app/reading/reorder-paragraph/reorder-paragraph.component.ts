@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { APIService } from '../../api.servce';
 
@@ -8,7 +8,8 @@ import { APIService } from '../../api.servce';
     templateUrl: './reorder-paragraph.component.html'
 })
 
-export class ReorderParagraphComponent implements OnInit {
+export class ReorderParagraphComponent implements OnInit, OnChanges {
+    @Input() jumbledPara;
     source: Array<string>;
     target = [];
     correctIndex = [];
@@ -25,6 +26,13 @@ export class ReorderParagraphComponent implements OnInit {
             console.log('DATA: ' , this.source);
             this.shuffleSourceList();
         });
+    }
+
+    ngOnChanges(change: SimpleChanges) {
+        if (change.jumbledPara.firstChange) {
+            return;
+        }
+        this.target = [];
     }
     /**
      * below function will shuffle the source array.

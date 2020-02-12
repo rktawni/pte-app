@@ -1,5 +1,7 @@
 <div class="sectionHeading">Fill in the blanks (Reading & Writing)</div>
 <app-progress-bar [progress]='progress'></app-progress-bar>
-<read-write-fib [rwFIBData] = "rwFIB"></read-write-fib>
-<!-- <app-reorder-paragraph></app-reorder-paragraph> -->
+<read-write-fib [rwFIBData] = "rwFIB" *ngIf="rwFIB"></read-write-fib>
+<app-reorder-paragraph [jumbledPara] = 'jumbledPara' *ngIf="jumbledPara"></app-reorder-paragraph>
+<app-mcma [mcmaData]="mcmaTest" *ngIf="mcmaTest"></app-mcma>
+<app-fib-dd [fibData]="fib" *ngIf="fib"></app-fib-dd>
 <button (click)="loadNextQuestion()">Next<i class="fa fa-home"></i></button>

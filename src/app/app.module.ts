@@ -9,7 +9,8 @@ import { APIService } from './api.servce';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ReadingComponent } from './reading/reading.component';
 import { ReadWriteFIBComponent } from './reading/read-write-FIB/read-write-FIB.component';
-
+import { MultipleChoiceMultipleAnswerComponent } from './reading/multiple-choice-multiple-answer/multiple-choice-multiple-answer.component';
+import { FillInTheBlankDDComponent } from './reading/fib-dd/fib-dd.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { ReadWriteFIBComponent } from './reading/read-write-FIB/read-write-FIB.c
     ReorderParagraphComponent,
     ProgressBarComponent,
     ReadingComponent,
-    ReadWriteFIBComponent
+    ReadWriteFIBComponent,
+    MultipleChoiceMultipleAnswerComponent,
+    FillInTheBlankDDComponent
   ],
   imports: [
     BrowserModule,
