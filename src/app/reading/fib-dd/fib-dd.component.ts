@@ -11,6 +11,7 @@ export class FillInTheBlankDDComponent implements OnChanges {
 	@ViewChild('container', { read: ViewContainerRef, static: true }) container: ViewContainerRef;
 	paraArray;
 	options;
+	currentElementID;
 	constructor() {
 
 	}
@@ -34,11 +35,26 @@ export class FillInTheBlankDDComponent implements OnChanges {
                 this.container.insert(viewRef);
             }
 		}
-
 	}
 	createTemplate(elementIndex: number) {
         return this.template.createEmbeddedView({
             paragraph: this.paraArray[elementIndex]
         });
-    }
+	}
+
+	drop(evt) {
+		console.log('Object Dropped: ', evt);
+		evt.preventDefault();
+		const data = evt.dataTransfer.getData('id');
+    	evt.target.appendChild(document.getElementById(this.currentElementID));
+	}
+
+	allowDrop(evt) {
+		evt.preventDefault();
+	}
+
+	onDragStart(evt) {
+		this.currentElementID = evt.target.id;
+		console.log("Option Element: ", evt.target.innerText);
+	}
 }

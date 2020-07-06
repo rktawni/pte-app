@@ -11,6 +11,11 @@ import { ReadingComponent } from './reading/reading.component';
 import { ReadWriteFIBComponent } from './reading/read-write-FIB/read-write-FIB.component';
 import { MultipleChoiceMultipleAnswerComponent } from './reading/multiple-choice-multiple-answer/multiple-choice-multiple-answer.component';
 import { FillInTheBlankDDComponent } from './reading/fib-dd/fib-dd.component';
+import { MultipleChoiceSingleAnswerComponent } from './reading/multiple-choice-single-answer/multiple-choice-single-answer.component';
+import { WritingComponent } from './writing/writing.component';
+import { SummarizeWrittenTextComponent } from './writing/summarize-written-text/summarize-written-text.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppTestHeaderComponent } from './common/app-test-header/app-test-header.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +25,17 @@ import { FillInTheBlankDDComponent } from './reading/fib-dd/fib-dd.component';
     ReadingComponent,
     ReadWriteFIBComponent,
     MultipleChoiceMultipleAnswerComponent,
-    FillInTheBlankDDComponent
+    MultipleChoiceSingleAnswerComponent,
+    FillInTheBlankDDComponent,
+    WritingComponent,
+    SummarizeWrittenTextComponent,
+    AppTestHeaderComponent
   ],
   imports: [
     BrowserModule,
     DragDropModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [APIService],
   bootstrap: [AppComponent]

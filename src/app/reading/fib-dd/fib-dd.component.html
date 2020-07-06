@@ -4,9 +4,10 @@
 </div>
 
 <ng-template #template let-paragraph="paragraph">
-    <span>{{paragraph}}<span class="dropContainer" cdkDropList></span></span>      
+    <span>{{paragraph}}<span class="dropContainer"
+        (dragover)="allowDrop($event)" (drop)="drop($event)"></span></span>      
 </ng-template>
 
-<div class="optionContainer" *ngIf="options" cdkDropList>
-<div class="dragOption" cdkDrag *ngFor="let item of options">{{item}}</div>
+<div class="optionContainer" (drop)="drop($event)" (dragover)="allowDrop($event)">
+<div class="dragOption" *ngFor="let item of options" draggable="true" id={{item}} (dragstart)="onDragStart($event)">{{item}}</div>
 </div>

@@ -17,11 +17,16 @@ export class APIService {
             reorderParagraph: this.httpClient.get('./assets/reorderParagraph.json'),
             readWriteFIB: this.httpClient.get('./assets/rwFillInTheBlank.json'),
             readingMCMA: this.httpClient.get('./assets/reading-mcma.json'),
-            readingFIB: this.httpClient.get('./assets/fillInTheBlank.json')
+            readingFIB: this.httpClient.get('./assets/fillInTheBlank.json'),
+            readingMCSA: this.httpClient.get('./assets/reading-mcsa.json')
         });
         // return this.httpClient.get('./assets/reading.json');
     }
     getReadWriteFIB(): Observable<any> {
         return this.httpClient.get('./assets/rwFillInTheBlank.json');
+    }
+
+    getWriting(): Observable<any> {
+        return this.httpClient.get('./assets/writing.json');
     }
 }

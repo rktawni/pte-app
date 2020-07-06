@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../api.servce';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-reading',
@@ -16,9 +17,11 @@ export class ReadingComponent implements OnInit {
     testReorderParagraph = []; // reorder paragraph
     jumbledPara;
     mcmaTest;
+    mcsaTest;
     mcma = []; // Multiple choise multiple answer
     mcsa = []; // Multiple choise single answer
     responseData;
+    title = 'Reading';
 
     constructor(private apiService: APIService) {}
 
@@ -39,6 +42,7 @@ export class ReadingComponent implements OnInit {
         this.testReorderParagraph = data.reorderParagraph.paragraphs;
         this.mcma = data.readingMCMA.mcma;
         this.readingFIB = data.readingFIB.fib;
+        this.mcsa = data.readingMCSA.mcsa;
         this.loadNextQuestion();
     }
 
@@ -54,6 +58,9 @@ export class ReadingComponent implements OnInit {
         } else if (this.readingFIB.length) {
             this.mcmaTest = undefined;
             this.fib = this.readingFIB.shift();
+        } else if (this.mcsa.length) {
+            this.fib = undefined;
+            this.mcsaTest = this.mcsa.shift();
         }
     }
 }
